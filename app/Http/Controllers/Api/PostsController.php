@@ -43,6 +43,13 @@ class PostsController extends Controller
     {
         $posts = Post::where('slug', $slug)->get();
 
+        //aggiunta immagini
+        foreach($posts as $post){
+            if($post->cover){
+                $post->cover = asset('storage/' . $post->cover);
+            }
+        }
+
         return response()->json([
             'status' => true,
             'results' => $posts
