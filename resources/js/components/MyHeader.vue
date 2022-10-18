@@ -7,7 +7,7 @@
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item" v-for="(nav, index) in navItems" :key="index">
-                                <a class="nav-link" :href="nav.link">{{nav.name}}</a>
+                                <router-link class="nav-link" :to="{name: nav.linkRouter}">{{nav.name}}</router-link>
                             </li>
                         </ul>
                     </div>
@@ -28,20 +28,20 @@
             return{
                 navItems: [
                         {
-                           name: 'Post',
-                           link: '#'
+                           name: 'Home',
+                           linkRouter: 'home'
                         },
                         {
                            name: 'Blog',
-                           link: '#'
+                           linkRouter: 'blog'
                         },
                         {
                            name: 'News',
-                           link: '#'
+                           linkRouter: 'news'
                         },
                         {
-                           name: 'Chi siamo',
-                           link: '#'
+                           name: 'Contatti',
+                           linkRouter: 'contatti'
                         },
                     ],
             }
