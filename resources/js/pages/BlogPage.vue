@@ -29,7 +29,7 @@
                 <p class="card-text"><strong>Content: </strong>{{post.content}}</p>
                 <p class="card-text"><strong>Category: </strong>{{post.category.name}}</p>
                 <p v-for="(tag, index) in post.tags" :key="index" >Tag: {{tag.name}}</p>
-                <a href="#" class="btn btn-primary">More..</a>
+                <router-link :to="{name: 'one-post', params: {slug: post.slug}}" class="btn btn-primary">More..</router-link>
             </div>
         </div>
     </div>

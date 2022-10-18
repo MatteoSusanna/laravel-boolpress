@@ -3,11 +3,12 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-import HomePage from './pages/HomePage'
-import BlogPage from './pages/BlogPage'
-import ContattiPage from './pages/ContattiPage'
-import NewsPage from './pages/NewsPage'
-import ErrorPage from './pages/ErrorPage'
+import HomePage from './pages/HomePage';
+import BlogPage from './pages/BlogPage';
+import ContattiPage from './pages/ContattiPage';
+import NewsPage from './pages/NewsPage';
+import OnePostPage from './pages/OnePostPage';
+import ErrorPage from './pages/ErrorPage';
 
 const router = new VueRouter({
     mode: 'history',
@@ -21,6 +22,11 @@ const router = new VueRouter({
             path: '/blog',
             name: 'blog',
             component: BlogPage
+        },
+        {
+            path: '/blog/:slug',
+            name: 'one-post',
+            component: OnePostPage
         },
         {
             path: '/contatti',
