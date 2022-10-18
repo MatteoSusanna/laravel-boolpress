@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage'
 import BlogPage from './pages/BlogPage'
 import ContattiPage from './pages/ContattiPage'
 import NewsPage from './pages/NewsPage'
+import ErrorPage from './pages/ErrorPage'
 
 const router = new VueRouter({
     mode: 'history',
@@ -34,7 +35,7 @@ const router = new VueRouter({
         {
             path: '/*',
             name: 'error-404',
-            component: HomePage
+            component: ErrorPage
         },
     ] 
 });
