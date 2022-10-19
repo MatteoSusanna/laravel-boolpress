@@ -2129,10 +2129,12 @@ var render = function render() {
     staticClass: "navbar navbar-expand-md navbar-light bg-white shadow-sm my_nav"
   }, [_c("div", {
     staticClass: "container"
-  }, [_c("a", {
+  }, [_c("router-link", {
     staticClass: "navbar-brand",
     attrs: {
-      href: "/"
+      to: {
+        name: "home"
+      }
     }
   }, [_vm._v("BoolPress")]), _vm._v(" "), _c("div", {
     staticClass: "collapse navbar-collapse",
@@ -2156,7 +2158,7 @@ var render = function render() {
       staticClass: "mr-1",
       "class": nav.fontawesome
     }), _vm._v(_vm._s(nav.name))])], 1);
-  }), 0)])]), _vm._v(" "), _vm._m(0)]);
+  }), 0)])], 1), _vm._v(" "), _vm._m(0)]);
 };
 
 var staticRenderFns = [function () {
@@ -2463,6 +2465,13 @@ var render = function render() {
       return _c("p", {
         key: index
       }, [_vm._v("Tag: " + _vm._s(tag.name))]);
+    }), _vm._v(" "), _c("router-link", {
+      staticClass: "my-2 fa-solid fa-backward fa-2x",
+      attrs: {
+        to: {
+          name: "blog"
+        }
+      }
     })], 2)]);
   }), 0);
 };

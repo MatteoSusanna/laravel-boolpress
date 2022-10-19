@@ -7,6 +7,7 @@
                   <p class="card-text"><strong>Content: </strong>{{post.content}}</p>
                   <p class="card-text"><strong>Category: </strong>{{post.category.name}}</p>
                 <p v-for="(tag, index) in post.tags" :key="index" >Tag: {{tag.name}}</p>
+                <router-link class="my-2 fa-solid fa-backward fa-2x" :to="{name: 'blog'}"></router-link>
               </div>
           </div>
       </div>

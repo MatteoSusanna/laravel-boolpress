@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm my_nav">
             <div class="container">
-                    <a class="navbar-brand" href="/">BoolPress</a>
+                    <router-link class="navbar-brand" :to="{name: 'home'}">BoolPress</router-link>
                     
                     
 
