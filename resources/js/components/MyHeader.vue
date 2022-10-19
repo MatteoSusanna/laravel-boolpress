@@ -2,12 +2,14 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm my_nav">
             <div class="container">
                     <a class="navbar-brand" href="/">BoolPress</a>
+                    
+                    
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item" v-for="(nav, index) in navItems" :key="index">
-                                <router-link class="nav-link" :to="{name: nav.linkRouter}">{{nav.name}}</router-link>
+                            <li class="nav-item mr-2" v-for="(nav, index) in navItems" :key="index">
+                                <router-link class="nav-link" :to="{name: nav.linkRouter}"><i :class="nav.fontawesome" class="mr-1"></i>{{nav.name}}</router-link>
                             </li>
                         </ul>
                     </div>
@@ -30,19 +32,22 @@
                         {
                            name: 'Home',
                            linkRouter: 'home', 
-                           fontawesome: ''
+                           fontawesome: 'fa-solid fa-house'
                         },
                         {
                            name: 'Blog',
-                           linkRouter: 'blog'
+                           linkRouter: 'blog',
+                           fontawesome: 'fa-solid fa-signs-post'
                         },
                         {
-                           name: 'News',
-                           linkRouter: 'news'
+                           name: 'Info',
+                           linkRouter: 'news',
+                           fontawesome:'fa-solid fa-circle-info'
                         },
                         {
                            name: 'Contatti',
-                           linkRouter: 'contatti'
+                           linkRouter: 'contatti',
+                           fontawesome: 'fa-solid fa-address-book'
                         },
                     ],
             }
@@ -51,4 +56,5 @@
 </script>
 
 <style>
+
 </style>

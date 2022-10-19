@@ -1915,16 +1915,19 @@ __webpack_require__.r(__webpack_exports__);
       navItems: [{
         name: 'Home',
         linkRouter: 'home',
-        fontawesome: ''
+        fontawesome: 'fa-solid fa-house'
       }, {
         name: 'Blog',
-        linkRouter: 'blog'
+        linkRouter: 'blog',
+        fontawesome: 'fa-solid fa-signs-post'
       }, {
-        name: 'News',
-        linkRouter: 'news'
+        name: 'Info',
+        linkRouter: 'news',
+        fontawesome: 'fa-solid fa-circle-info'
       }, {
         name: 'Contatti',
-        linkRouter: 'contatti'
+        linkRouter: 'contatti',
+        fontawesome: 'fa-solid fa-address-book'
       }]
     };
   }
@@ -2141,7 +2144,7 @@ var render = function render() {
   }, _vm._l(_vm.navItems, function (nav, index) {
     return _c("li", {
       key: index,
-      staticClass: "nav-item"
+      staticClass: "nav-item mr-2"
     }, [_c("router-link", {
       staticClass: "nav-link",
       attrs: {
@@ -2149,7 +2152,10 @@ var render = function render() {
           name: nav.linkRouter
         }
       }
-    }, [_vm._v(_vm._s(nav.name))])], 1);
+    }, [_c("i", {
+      staticClass: "mr-1",
+      "class": nav.fontawesome
+    }), _vm._v(_vm._s(nav.name))])], 1);
   }), 0)])]), _vm._v(" "), _vm._m(0)]);
 };
 
