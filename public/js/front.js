@@ -2280,11 +2280,14 @@ var render = function render() {
       staticClass: "card-text"
     }, [_c("strong", [_vm._v("Content: ")]), _vm._v(_vm._s(post.content))]), _vm._v(" "), _c("p", {
       staticClass: "card-text"
-    }, [_c("strong", [_vm._v("Category: ")]), _vm._v(_vm._s(post.category.name))]), _vm._v(" "), _vm._l(post.tags, function (tag, index) {
-      return _c("p", {
-        key: index
-      }, [_vm._v("Tag: " + _vm._s(tag.name))]);
-    }), _vm._v(" "), _c("router-link", {
+    }, [_c("strong", [_vm._v("Category: ")]), _vm._v(_vm._s(post.category.name))]), _vm._v(" "), _c("h5", [_vm._v("Tag:")]), _vm._v(" "), _vm._l(post.tags, function (tag, index) {
+      return _c("span", {
+        key: index,
+        staticClass: "badge badge-dark"
+      }, [_vm._v(_vm._s(tag.name))]);
+    }), _vm._v(" "), _c("div", {
+      staticClass: "my-2"
+    }, [_c("router-link", {
       staticClass: "btn btn-primary",
       attrs: {
         to: {
@@ -2294,7 +2297,7 @@ var render = function render() {
           }
         }
       }
-    }, [_vm._v("More..")])], 2)]);
+    }, [_vm._v("More..")])], 1)], 2)]);
   })], 2);
 };
 
@@ -2461,18 +2464,19 @@ var render = function render() {
       staticClass: "card-text"
     }, [_c("strong", [_vm._v("Content: ")]), _vm._v(_vm._s(post.content))]), _vm._v(" "), _c("p", {
       staticClass: "card-text"
-    }, [_c("strong", [_vm._v("Category: ")]), _vm._v(_vm._s(post.category.name))]), _vm._v(" "), _vm._l(post.tags, function (tag, index) {
-      return _c("p", {
-        key: index
-      }, [_vm._v("Tag: " + _vm._s(tag.name))]);
-    }), _vm._v(" "), _c("router-link", {
+    }, [_c("strong", [_vm._v("Category: ")]), _vm._v(_vm._s(post.category.name))]), _vm._v(" "), _c("h5", [_vm._v("Tag:")]), _vm._v(" "), _vm._l(post.tags, function (tag, index) {
+      return _c("span", {
+        key: index,
+        staticClass: "badge badge-dark"
+      }, [_vm._v(_vm._s(tag.name))]);
+    }), _vm._v(" "), _c("div", [_c("router-link", {
       staticClass: "my-2 fa-solid fa-backward fa-2x",
       attrs: {
         to: {
           name: "blog"
         }
       }
-    })], 2)]);
+    })], 1)], 2)]);
   }), 0);
 };
 

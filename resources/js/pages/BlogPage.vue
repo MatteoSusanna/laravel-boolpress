@@ -28,8 +28,12 @@
                 <h5 class="card-title"><strong>Name: </strong>{{post.name}}</h5>
                 <p class="card-text"><strong>Content: </strong>{{post.content}}</p>
                 <p class="card-text"><strong>Category: </strong>{{post.category.name}}</p>
-                <p v-for="(tag, index) in post.tags" :key="index" >Tag: {{tag.name}}</p>
-                <router-link :to="{name: 'one-post', params: {slug: post.slug}}" class="btn btn-primary">More..</router-link>
+                <h5>Tag:</h5>
+                <span v-for="(tag, index) in post.tags" :key="index" class="badge badge-dark">{{tag.name}}</span>
+
+                <div class="my-2">
+                    <router-link :to="{name: 'one-post', params: {slug: post.slug}}" class="btn btn-primary">More..</router-link>
+                </div>
             </div>
         </div>
     </div>
