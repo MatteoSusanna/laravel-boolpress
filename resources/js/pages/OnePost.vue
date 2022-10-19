@@ -1,15 +1,17 @@
 <template>
-    <div class="container">
+    <div class="container my-4">
           <div class="card m-auto g-4 my_card" style="width: 40rem;" v-for="(post, index) in posts" :key="index">
               <img :src="post.cover" class="card-img-top">
               <div class="card-body">
                   <h5 class="card-title"><strong>Name: </strong>{{post.name}}</h5>
                   <p class="card-text"><strong>Content: </strong>{{post.content}}</p>
+                  <p class="card-text"><strong>Category: </strong>{{post.category.name}}</p>
+                <p v-for="(tag, index) in post.tags" :key="index" >Tag: {{tag.name}}</p>
               </div>
           </div>
       </div>
 </template>
-  
+
 <script>
       export default {
           name: 'OnePost',

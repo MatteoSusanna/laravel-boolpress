@@ -41,7 +41,7 @@ class PostsController extends Controller
      */
     public function show($slug)
     {
-        $posts = Post::where('slug', $slug)->get();
+        $posts = Post::where('slug', $slug)->with(['category', 'tags'])->get();
 
         //aggiunta immagini
         foreach($posts as $post){

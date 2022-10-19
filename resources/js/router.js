@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage';
 import BlogPage from './pages/BlogPage';
 import ContattiPage from './pages/ContattiPage';
 import NewsPage from './pages/NewsPage';
-import OnePostPage from './pages/OnePostPage';
+import OnePost from './pages/OnePost';
 import ErrorPage from './pages/ErrorPage';
 
 const router = new VueRouter({
@@ -26,7 +26,7 @@ const router = new VueRouter({
         {
             path: '/blog/:slug',
             name: 'one-post',
-            component: OnePostPage
+            component: OnePost
         },
         {
             path: '/contatti',

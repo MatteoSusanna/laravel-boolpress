@@ -44,13 +44,16 @@
                 lastPage: null,
                 curretPage: 1,
                 spinner: true,
-                params: '&page=',
             }
         },
         methods:{
             apiFunction(page){
                 this.spinner = true;
-                axios.get('/api/posts'+ params + page)
+                axios.get('/api/posts', {
+                    params:{
+                        page: page,
+                    }
+                })
                 .then(res => {
                     this.posts = res.data.results.data;
 

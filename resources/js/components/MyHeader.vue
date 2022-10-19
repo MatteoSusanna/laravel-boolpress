@@ -29,7 +29,8 @@
                 navItems: [
                         {
                            name: 'Home',
-                           linkRouter: 'home'
+                           linkRouter: 'home', 
+                           fontawesome: ''
                         },
                         {
                            name: 'Blog',
