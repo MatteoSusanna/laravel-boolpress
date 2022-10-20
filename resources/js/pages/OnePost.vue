@@ -9,7 +9,7 @@
                   
                   <h5>Tag:</h5>
                   <span v-for="(tag, index) in post.tags" :key="index" class="badge badge-dark">{{tag.name}}</span>
-
+ 
                   <div>
                       <router-link class="my-2 fa-solid fa-backward fa-2x" :to="{name: 'blog'}"></router-link>
                   </div>
