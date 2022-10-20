@@ -20,7 +20,7 @@ class SandNewMail extends Mailable
      */
     public function __construct($contact)
     {
-        $this->$contact = $contact;
+        $this->contact = $contact;
     }
 
     /**
