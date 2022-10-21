@@ -2011,16 +2011,34 @@ __webpack_require__.r(__webpack_exports__);
     return {
       name: '',
       email: '',
-      content: ''
+      content: '',
+      status: false,
+      error: {},
+      disabledButton: false
     };
   },
   methods: {
     sandMail: function sandMail() {
+      var _this = this;
+
+      this.disabledButton = true;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/contacts', {
         'name': this.name,
         'email': this.email,
         'content': this.content
       }).then(function (res) {
+        _this.status = res.data.status;
+        _this.disabledButton = false;
+
+        if (_this.status) {
+          _this.error = {};
+          _this.name = '';
+          _this.email = '';
+          _this.content = '';
+        } else {
+          _this.error = res.data.error;
+        }
+
         console.log(res);
       });
     }
@@ -2357,7 +2375,12 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_c("h1", [_vm._v("Contatti")]), _vm._v(" "), _c("form", {
+  }, [_c("h1", [_vm._v("Contatti")]), _vm._v(" "), _vm.status ? _c("div", {
+    staticClass: "alert alert-success",
+    attrs: {
+      role: "alert"
+    }
+  }, [_vm._v("\n        Messaggio inviato con successo\n    ")]) : _vm._e(), _vm._v(" "), _c("form", {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
@@ -2378,6 +2401,7 @@ var render = function render() {
       expression: "name"
     }],
     staticClass: "form-control",
+    "class": _vm.error.name ? "is-invalid" : "",
     attrs: {
       type: "text",
       id: "name"
@@ -2391,7 +2415,12 @@ var render = function render() {
         _vm.name = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _vm._l(_vm.error.name, function (errors, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "invalid-feedback"
+    }, [_vm._v("\n                " + _vm._s(errors) + "\n            ")]);
+  })], 2), _vm._v(" "), _c("div", {
     staticClass: "form-group"
   }, [_c("label", {
     attrs: {
@@ -2405,6 +2434,7 @@ var render = function render() {
       expression: "email"
     }],
     staticClass: "form-control",
+    "class": _vm.error.email ? "is-invalid" : "",
     attrs: {
       type: "email",
       id: "email"
@@ -2418,7 +2448,12 @@ var render = function render() {
         _vm.email = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _vm._l(_vm.error.email, function (errors, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "invalid-feedback"
+    }, [_vm._v("\n                " + _vm._s(errors) + "\n            ")]);
+  })], 2), _vm._v(" "), _c("div", {
     staticClass: "form-group"
   }, [_c("label", {
     attrs: {
@@ -2432,6 +2467,7 @@ var render = function render() {
       expression: "content"
     }],
     staticClass: "form-control",
+    "class": _vm.error.content ? "is-invalid" : "",
     attrs: {
       id: "content",
       rows: "6"
@@ -2445,7 +2481,24 @@ var render = function render() {
         _vm.content = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c("button", {
+  }), _vm._v(" "), _vm._l(_vm.error.content, function (errors, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "invalid-feedback"
+    }, [_vm._v("\n                " + _vm._s(errors) + "\n            ")]);
+  })], 2), _vm._v(" "), _vm.disabledButton ? _c("button", {
+    staticClass: "btn btn-primary",
+    attrs: {
+      type: "button",
+      disabled: ""
+    }
+  }, [_c("span", {
+    staticClass: "spinner-border spinner-border-sm",
+    attrs: {
+      role: "status",
+      "aria-hidden": "true"
+    }
+  }), _vm._v("\n            Loading...\n        ")]) : _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"

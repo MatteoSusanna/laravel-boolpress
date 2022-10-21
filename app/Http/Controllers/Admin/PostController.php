@@ -55,8 +55,10 @@ class PostController extends Controller
         $dati = $request->all();
 
         //carica immagine
-        $img_path = Storage::put('cover', $dati['image']);
-        $dati['cover'] = $img_path;
+        if(array_key_exists('image', $dati)){
+            $img_path = Storage::put('cover', $dati['image']);
+            $dati['cover'] = $img_path;
+        }
 
         $posts = new Post();
         $posts->fill($dati);
