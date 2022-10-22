@@ -6,6 +6,7 @@
         </div>
 
         <form @submit.prevent="sandMail()">
+            <!-- Nome -->
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" :class="(error.name)?'is-invalid':''" id="name" v-model="name">
@@ -13,8 +14,9 @@
                 <div class="invalid-feedback" v-for="(errors, index) in error.name" :key="index">
                     {{errors}}
                 </div>
-            </div>     
+            </div>    
 
+            <!-- Email -->
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" :class="(error.email)?'is-invalid':''" id="email" v-model="email">
@@ -24,6 +26,7 @@
                 </div>
             </div>
 
+            <!-- Contenuto Messaggio -->
             <div class="form-group">
                 <label for="content">Content</label>
                 <textarea class="form-control" :class="(error.content)?'is-invalid':''" id="content" rows="6" v-model="content"></textarea>
@@ -33,6 +36,7 @@
                 </div>
             </div>
 
+            <!-- Bottone invio messaggio -->
             <button class="btn btn-primary" type="button" disabled v-if="(disabledButton)">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 Loading...
