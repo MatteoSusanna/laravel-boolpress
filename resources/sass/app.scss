@@ -10,3 +10,17 @@
 body{
     background-color: #a7a9be;
 }
+
+.nav-link{
+    &:hover{
+        background-color: grey !important;
+        color: white !important;
+        border-radius: 5px ;
+    }
+}
+
+.active{
+    background-color: grey !important;
+    color: white !important;
+    border-radius: 5px ;
+}

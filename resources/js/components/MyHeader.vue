@@ -1,15 +1,18 @@
 <template>
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm my_nav">
             <div class="container">
-                    <router-link class="navbar-brand" :to="{name: 'home'}">BoolPress</router-link>
+                    <router-link class="navbar-brand" :to="{name: 'home'}" >BoolPress</router-link>
                     
                     
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item mr-2" v-for="(nav, index) in navItems" :key="index">
-                                <router-link class="nav-link" :to="{name: nav.linkRouter}"><i :class="nav.fontawesome" class="mr-1"></i>{{nav.name}}</router-link>
+                            <li class="nav-item mr-2" v-for="(nav, index) in navItems" :key="index" >
+                                <router-link class="nav-link" :to="{name: nav.linkRouter}"   :class="$route.name.includes(nav.linkRouter)?'active':''">
+                                    <i :class="nav.fontawesome" class="mr-1"></i>
+                                    {{nav.name}}
+                                </router-link>
                             </li>
                         </ul>
                     </div>
@@ -50,8 +53,9 @@
                            fontawesome: 'fa-solid fa-address-book'
                         },
                     ],
+                counter: 0,
             }
-        }
+        },
     }
 </script>
 

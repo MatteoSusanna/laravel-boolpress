@@ -1928,7 +1928,8 @@ __webpack_require__.r(__webpack_exports__);
         name: 'Contatti',
         linkRouter: 'contatti',
         fontawesome: 'fa-solid fa-address-book'
-      }]
+      }],
+      counter: 0
     };
   }
 });
@@ -2188,6 +2189,7 @@ var render = function render() {
       staticClass: "nav-item mr-2"
     }, [_c("router-link", {
       staticClass: "nav-link",
+      "class": _vm.$route.name.includes(nav.linkRouter) ? "active" : "",
       attrs: {
         to: {
           name: nav.linkRouter
@@ -2196,7 +2198,7 @@ var render = function render() {
     }, [_c("i", {
       staticClass: "mr-1",
       "class": nav.fontawesome
-    }), _vm._v(_vm._s(nav.name))])], 1);
+    }), _vm._v("\n                                " + _vm._s(nav.name) + "\n                            ")])], 1);
   }), 0)])], 1), _vm._v(" "), _vm._m(0)]);
 };
 
