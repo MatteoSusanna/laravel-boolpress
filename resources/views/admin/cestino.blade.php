@@ -4,9 +4,6 @@
 
 @section('content')
     <div class="container">
-        <a class="nav-link btn btn-success" href="{{ route('admin.posts.create') }}">Crea Post</a>
-    </div>
-    <div class="container">
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
@@ -41,17 +38,15 @@
                                 @endforeach
                             </td>
                             <td class="d-flex">
-                                <a href="{{route('admin.posts.show', ['post' => $post->id])}}" class="fas fa-eye btn" style="font-size: 25px; color: #8bd3dd;"></a>
-
-                                <a href="{{route('admin.posts.edit', ['post' => $post->id])}}" class="fas fa-edit text-warning mx-2 btn" style="font-size: 25px"></a>
                                 
-                                <form action="{{route('admin.posts.destroy', ['post' => $post->id])}}" method="POST" onsubmit="return confirm('Questo post verrà spostato nel cestino...');">
+                                <a href="{{route('admin.restore', ['post' => $post->id])}}" class="btn fa-solid fa-window-restore" style="font-size: 25px; color: #86C552;"></a>
+
+                                <form action="{{route('admin.forceDestroy', ['post' => $post->id])}}" method="POST" onsubmit="return confirm('Vuoi cancellare definitivamente il post?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn fas fa-trash-alt text-danger" style="font-size: 25px"></button>
                                 </form>
-                            </td>
-                            
+                            </td>                            
                         </tr>
                     @endforeach
             </tbody>

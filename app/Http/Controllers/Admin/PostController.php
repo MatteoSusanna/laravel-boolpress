@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\Tag;
 use Illuminate\Support\Str;
+use Ramsey\Uuid\Codec\TimestampLastCombCodec;
 
 class PostController extends Controller
 {
@@ -161,5 +162,33 @@ class PostController extends Controller
         $post->tags()->sync([]);
         $post->delete();
         return redirect()->route('admin.posts.index')->with('status', 'Cancellazione avvenuta con succeso');
+    }
+
+
+
+    //aggiunta soft delete
+    public function indexSoft()
+    {
+        $posts = Post::onlyTrashed()->get();
+        return view('admin.cestino', compact('posts'));
+    }
+    public function restore($id)
+    {
+        $posts = Post::withTrashed()->where('id', $id)->first();
+        $posts->restore();
+
+        return redirect()->route('admin.destroy')->with('status', 'Post ripristinato');
+    }
+
+    //cancellazione definitiva
+    public function forceDestroy($id){
+
+        $posts = Post::withTrashed()->where('id', $id)->first();
+
+        Storage::delete($posts->cover);
+        $posts->tags()->sync([]);
+        $posts->forceDelete();
+
+        return redirect()->route('admin.destroy')->with('status', 'Post eliminato definitivamente');
     }
 }

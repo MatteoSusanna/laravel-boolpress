@@ -24,6 +24,10 @@ Route::middleware('auth')
         Route::resource('posts', 'PostController');
         Route::resource('categories', 'CategoryController');
         Route::resource('tags', 'TagController');
+
+        Route::get('destroy', 'PostController@indexSoft')->name('destroy');
+        Route::get('restore/{post}', 'PostController@restore')->name('restore');
+        Route::delete('forceDestroy/{post}', 'PostController@forceDestroy')->name('forceDestroy');
     });
 
 
