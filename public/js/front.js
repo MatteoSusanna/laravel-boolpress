@@ -1965,6 +1965,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       posts: [],
+      categories: null,
+      selectCategories: '',
       lastPage: null,
       curretPage: 1,
       spinner: true
@@ -1977,7 +1979,8 @@ __webpack_require__.r(__webpack_exports__);
       this.spinner = true;
       axios.get('/api/posts', {
         params: {
-          page: page
+          page: page,
+          categories: this.selectCategories
         }
       }).then(function (res) {
         _this.posts = res.data.results.data;
@@ -1985,10 +1988,22 @@ __webpack_require__.r(__webpack_exports__);
         _this.curretPage = res.data.results.current_page;
         _this.spinner = false;
       });
+    },
+    getCategory: function getCategory() {
+      var _this2 = this;
+
+      axios.get('/api/categories').then(function (res) {
+        _this2.categories = res.data.results;
+      });
+    },
+    selectCategory: function selectCategory(category) {
+      this.selectCategories = category;
+      this.apiFunction(1);
     }
   },
   mounted: function mounted() {
     this.apiFunction(1);
+    this.getCategory();
   }
 });
 
@@ -2299,7 +2314,21 @@ var render = function render() {
         return _vm.apiFunction(_vm.curretPage + 1);
       }
     }
-  }, [_vm._v("Next")])])])]), _vm._v(" "), _vm.spinner ? _c("div", {
+  }, [_vm._v("Next")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "container"
+  }, [_c("ul", {
+    staticClass: "my_ul"
+  }, _vm._l(_vm.categories, function (category, index) {
+    return _c("li", {
+      key: index,
+      staticClass: "li_active",
+      on: {
+        click: function click($event) {
+          return _vm.selectCategory(category.id);
+        }
+      }
+    }, [_vm._v(_vm._s(category.name))]);
+  }), 0)]), _vm._v(" "), _vm.spinner ? _c("div", {
     staticClass: "d-flex justify-content-center"
   }, [_vm._m(0)]) : _vm._l(_vm.posts, function (post, index) {
     return _c("div", {
@@ -2693,7 +2722,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.my_card{\r\n        margin-bottom: 25px !important;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.my_card{\r\n    margin-bottom: 25px !important;\n}\n.li_active{\r\n    list-style: none;\n}\n.li_active:hover{\r\n    background-color: blue;\r\n    color: white;\n}\n.my_ul{\r\n    width: 30%;\n}\r\n\r\n", ""]);
 
 // exports
 

@@ -14,13 +14,19 @@
             </ul>
         </nav>
 
+        <div class="container">
+            <ul class="my_ul">
+                <li v-for="(category, index) in categories" :key="index" class="li_active" @click="selectCategory(category.id)">{{category.name}}</li>
+            </ul>
+        </div>
+
         <!--Spinner di caricamento post-->
         <div class="d-flex justify-content-center" v-if="spinner">
             <div class="spinner-border text-secondary" role="status">
                 <span class="sr-only"></span>
             </div>
         </div>
-
+        
         <!--Post-->
         <div class="card m-auto g-4 my_card" style="width: 40rem;" v-for="(post, index) in posts" :key="index" v-else>
             <img :src="post.cover" class="card-img-top">
@@ -36,6 +42,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </template>
 
@@ -45,6 +52,8 @@
         data(){
             return{
                 posts: [],
+                categories: null,
+                selectCategories: '',
                 lastPage: null,
                 curretPage: 1,
                 spinner: true,
@@ -56,6 +65,7 @@
                 axios.get('/api/posts', {
                     params:{
                         page: page,
+                        categories: this.selectCategories,
                     }
                 })
                 .then(res => {
@@ -67,16 +77,39 @@
                     this.spinner = false;
                 })
             },
+            getCategory(){
+                axios.get('/api/categories').then(res=>{
+                    this.categories = res.data.results;
+                })
+            },
+            selectCategory(category){
+                this.selectCategories = category;
+                this.apiFunction(1);
+            }
         },
         mounted(){
             this.apiFunction(1);
+            this.getCategory();
         },
     }
 </script>
 
 <style>
 .my_card{
-        margin-bottom: 25px !important;
-    }
+    margin-bottom: 25px !important;
+}
+
+.li_active{
+    list-style: none;
+}
+
+.li_active:hover{
+    background-color: blue;
+    color: white;
+}
+
+.my_ul{
+    width: 30%;
+}
 
 </style>

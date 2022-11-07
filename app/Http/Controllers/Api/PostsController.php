@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
@@ -15,7 +16,13 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::with(['category', 'tags'])->paginate(2);
+        $data = request()->all();
+
+        if($data['categories'] == null){
+            $posts = Post::with(['category', 'tags'])->paginate(2);
+        }else{
+            $posts = Post::with(['category', 'tags'])->where('category_id', $data['categories'])->paginate(2);
+        }
         
         //aggiunta immagini
         foreach($posts as $post){
